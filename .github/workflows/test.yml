@@ -1,0 +1,29 @@
+name: test
+
+on:
+  pull_request:
+    branches:
+      - master
+    types: [closed]
+
+jobs:
+  test_string:
+    if: github.event.pull_request.merged == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello (compare with string)
+        run: echo "Hello"
+
+  test_bool_itself:
+    if: github.event.pull_request.merged
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello (evaluate itself as boolean)
+        run: echo "Hello"
+
+  test_bool:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello (compare with boolean)
+        run: echo "Hello"
