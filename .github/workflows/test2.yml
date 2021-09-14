@@ -1,0 +1,18 @@
+name: test2
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    name: this will fail.
+    runs-on: ubuntu-latest
+    steps:
+      # These steps will fail because of no-checkout.
+      - id: cd
+        run: cd test_dir && cat test.md
+      - id: cat
+        run: cat README.md
