@@ -8,10 +8,11 @@ on:
 
 jobs:
   test:
-    name: this will fail.
+    name: this will not fail.
     runs-on: ubuntu-latest
     steps:
-      # These steps will fail because of no-checkout.
+      - name: checkout
+        uses: actions/checkout@v2
       - id: cd
         run: cd test_dir && cat test.md
       - id: cat
