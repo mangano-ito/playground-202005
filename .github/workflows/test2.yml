@@ -16,8 +16,8 @@ jobs:
       - id: cd
         run: cd test_dir && cat test.md
       - id: get_version
-        run: cat .version
+        run: echo "::set-output name=version::$(cat .version)"
       - name: terraform setup
         uses: hashicorp/setup-terraform@v1
         with:
-          terraform_version: ${{ steps.get_version.outputs.text }}
+          terraform_version: ${{ steps.get_version.outputs.version }}
