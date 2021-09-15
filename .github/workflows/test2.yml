@@ -20,4 +20,4 @@ jobs:
       - name: terraform setup
         uses: hashicorp/setup-terraform@v1
         with:
-          terraform_version: $${{ steps.get_version.outputs.text }}
+          terraform_version: ${{ steps.get_version.outputs.text }}
