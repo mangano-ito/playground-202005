@@ -15,9 +15,9 @@ jobs:
         uses: actions/checkout@v2
       - id: cd
         run: cd test_dir && cat test.md
-      - id: get_ref
-        run: cat ref
-      - id: cat_ref_text
-        uses: pCYSl5EDgo/cat@master
+      - id: get_version
+        run: cat .version
+      - name: terraform setup
+        uses: hashicorp/setup-terraform@v1
         with:
-          path: ${{ steps.get_ref.outputs.text }}
+          terraform_version: $${{ steps.get_version.outputs.text }}
